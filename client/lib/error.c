@@ -1,9 +1,4 @@
-#include "unp.h"
-#include <stdarg.h> /* ANSI C header file */
-#include <syslog.h> /* for syslog() */
-
-int daemon_proc; /* set nonzero by daemon_init() */
-static void err_doit(int, int, const char *, va_list);
+#include "error.h"
 
 /* Nonfatal error related to system call
 * Print message and return */
@@ -70,7 +65,7 @@ err_doit(int errnoflag, int level, const char *fmt, va_list ap) {
     errno_save = errno; /* value caller might want printed */
 #ifdef HAVE_VSNPRINTF
     vsnprintf(buf, MAXLINE, fmt, ap); /* safe */
-    #else
+#else
     vsprintf(buf, fmt, ap); /* not safe */
 #endif
     n = strlen(buf);

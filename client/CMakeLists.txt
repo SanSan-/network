@@ -3,4 +3,4 @@ project(network-client)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(network-client lib/unp.h config.h intro/daytimetcpcliv6.c lib/error.c lib/error.h)
+add_executable(network-client lib/unp.h config.h intro/daytimetcpcliv6.c lib/error.c lib/error.h lib/wrapsock.c lib/wrapsock.h lib/wrappthread.c lib/wrappthread.h)
