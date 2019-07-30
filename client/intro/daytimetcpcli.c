@@ -1,6 +1,4 @@
-#include "../lib/unp.h"
-#include "../lib/error.h"
-#include "../lib/wrapsock.h"
+#include "daytimetcpcli.h"
 
 int
 main(int argc, char **argv) {
