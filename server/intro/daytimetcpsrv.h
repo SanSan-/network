@@ -8,6 +8,7 @@
 #include "../lib/unp.h"
 #include "../lib/wrapsock.h"
 #include "../lib/wrapconnect.h"
+#include "../lib/inet.h"
 #include <time.h>
 
 #endif //NETWORK_SERVER_DAYTIMETCPSRV_H

@@ -6,7 +6,8 @@
 int
 main(int argc, char **argv) {
     int listenfd, connfd;
-    struct sockaddr_in servaddr;
+    socklen_t len;
+    struct sockaddr_in servaddr, cliaddr;
     char buff[MAXLINE];
     time_t ticks;
     /* Create a TCP socket */
@@ -21,7 +22,11 @@ main(int argc, char **argv) {
     Listen(listenfd, LISTENQ);
     /* Accept client connection, send reply (Infinite loop) */
     for (;;) {
-        connfd = Accept(listenfd, (SA *) NULL, NULL);
+        len = sizeof(cliaddr);
+        connfd = Accept(listenfd, (SA *) &cliaddr, &len);
+        printf("connection from %s, port %d\n",
+               Inet_ntop(AF_INET, &cliaddr.sin_addr, buff, sizeof(buff)),
+               ntohs(cliaddr.sin_port));
         ticks = time(NULL);
         snprintf(buff, sizeof(buff), "%.24s\r\n", ctime(&ticks));
         Write(connfd, buff, strlen(buff));
