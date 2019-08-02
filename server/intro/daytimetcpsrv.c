@@ -1,10 +1,7 @@
 //
 // Created by Alex Franz on 2019-07-10.
 //
-#include "../lib/unp.h"
-#include "../lib/wrapsock.h"
-#include "../lib/wrapconnect.h"
-#include <time.h>
+#include "daytimetcpsrv.h"
 
 int
 main(int argc, char **argv) {

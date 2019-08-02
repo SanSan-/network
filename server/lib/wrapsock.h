@@ -12,6 +12,6 @@ int Socket(int, int, int);
 
 int Bind(int, const struct sockaddr *, socklen_t);
 
-int Listen(int socket, int max_num_of_connection);
+void Listen(int, int);
 
 #endif //NETWORK_CLIENT_WRAPSOCK_H

@@ -20,10 +20,12 @@ Bind(int sock, const struct sockaddr *sockaddr, socklen_t socklen) {
     return (n);
 }
 
-int
-Listen(int socket, int max_num_of_connection) {
-    int n;
-    if ((n = listen(socket, max_num_of_connection) < 0))
-        err_sys("convert to listen socket error");
-    return (n);
+void
+Listen(int fd, int backlog) {
+    char *ptr;
+/* can override 2nd argument with environment variable */
+    if ((ptr = getenv("LISTENQ")) != NULL)
+        backlog = atoi(ptr);
+    if (listen(fd, backlog) < 0)
+        err_sys("listen error");
 }
